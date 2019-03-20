@@ -1,11 +1,9 @@
-body {
-  background: linear-gradient(to left, #ccc, #eee7f6);
-  color: #f8f8f8;
-  display: flex;
-  justify-content: center;
-  transition: all 0.3s ease;
+@import 'utils/fonts';
+
+#root {
+  width: 100%;
 }
 
-.autoprefixer-test {
-  user-select: none;
+body {
+  font-family: $roboto;
 }

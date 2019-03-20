@@ -1,11 +1,15 @@
 import React from 'react';
 
+import Routes from './routes';
+import Footer from './footer/footer';
+
 import './app.scss';
 
-const App = ({ title = 'world!' }) => (
-  <h1 style={{ color: 'teal' }}>
-    Hello, {title}
-  </h1>
+const App = () => (
+  <main className="app">
+    <Routes />
+    <Footer />
+  </main>
 );
 
 export default App;

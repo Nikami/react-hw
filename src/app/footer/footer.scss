@@ -1,0 +1,11 @@
+@import '../../assets/styles/utils/colors';
+
+.footer {
+  background-color: $bg-color;
+  grid-area: footer;
+  padding: 20px;
+
+  &__title {
+    color: $primary-color;
+  }
+}
