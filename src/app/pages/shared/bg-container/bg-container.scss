@@ -1,0 +1,15 @@
+.movies {
+  grid-area: page;
+}
+
+.header {
+  background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/783e3b0f-b68e-440e-a980-0e1c19cbe76c/772aef46-c367-4f6c-a63f-e638b77017f0/UA-en-20190318-popsignuptwoweeks-perspective_alpha_website_small.jpg");
+  background-size: cover;
+  height: 20%;
+
+  &__mask {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%), radial-gradient(50% 120%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%);
+    background-size: cover;
+    height: 100%;
+  }
+}
