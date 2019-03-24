@@ -1,3 +1,4 @@
+@import 'utils/colors';
 @import 'utils/fonts';
 
 #root {
@@ -8,6 +9,6 @@ body {
   font-family: $roboto;
 }
 
-//.netflix-title {
-//  color: ;
-//}
+.netflix-title {
+  color: $primary-color;
+}

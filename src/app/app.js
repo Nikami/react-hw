@@ -1,14 +1,14 @@
 import React from 'react';
 
 import Routes from './routes';
-import Footer123 from './footer';
+import Footer from './footer';
 
-import './app.scss';
+import './styles.scss';
 
 const App = () => (
   <main className="app">
     <Routes />
-    <Footer123 />
+    <Footer />
   </main>
 );
 

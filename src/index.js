@@ -3,17 +3,17 @@ import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import ErrorBoundary from './app/error-boundary/error-boundary';
+import Index from './app/error-boundary';
 import App from './app/app';
 
-import './index.scss';
+import './styles.scss';
 
 render(
-  <ErrorBoundary>
+  <Index>
     <CssBaseline />
     <Router>
       <App />
     </Router>
-  </ErrorBoundary>,
+  </Index>,
   document.getElementById('root'),
 );

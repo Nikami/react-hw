@@ -1,10 +1,10 @@
 import React from 'react';
 
-import './footer.scss';
+import './styles.scss';
 
 export default () => (
   <footer className="footer">
-    <div className="footer__title">
+    <div className="netflix-title">
       netflixroulette
     </div>
   </footer>

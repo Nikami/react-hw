@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const APP_DIR = path.resolve(__dirname, '../src');
+const PUBLIC_DIR = path.resolve(__dirname, '../public');
 const OUTPUT_DIR = path.resolve(__dirname, '../dist');
 const port = process.env.PORT || 3000;
 
@@ -50,7 +51,7 @@ module.exports = {
     new ExtractTextPlugin({ filename: 'styles.css' }),
     new HtmlWebpackPlugin({
       title: 'React HW',
-      template: path.join(APP_DIR, 'index.html'),
+      template: path.join(PUBLIC_DIR, 'index.html'),
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -71,7 +72,7 @@ module.exports = {
     port,
     inline: true,
     historyApiFallback: {
-      index: path.join(APP_DIR, 'index.html'),
+      index: path.join(PUBLIC_DIR, 'index.html'),
     },
   },
 };

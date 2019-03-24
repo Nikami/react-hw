@@ -1,7 +1,7 @@
 import React from 'react';
-import BgContainer from '../shared/bg-container/bg-conatiner';
+import BgContainer from '../shared/bg-container';
 
-import './movies.scss';
+import './styles.scss';
 
 const Movies = () => (
   <section>

@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import './bg-container.scss';
+import './styles.scss';
 
 const styles = theme => ({
   container: {
@@ -23,7 +23,7 @@ const BgContainer = ({ classes, children }) => (
     <div className="header">
       <div className="header__mask">
         <div className={classes.container}>
-          <p>
+          <p className="netflix-title">
             netflixroulette
           </p>
           {children}
