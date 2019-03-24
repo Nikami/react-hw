@@ -1,11 +1,16 @@
 import React from 'react';
 
+import withStyles from '@material-ui/core/styles/withStyles';
+import { containerMUI } from '../pages/shared/mui-styles';
+
 import './styles.scss';
 
-export default () => (
+const Footer = ({ classes }) => (
   <footer className="footer">
-    <div className="netflix-title">
+    <div className={`${classes.container} netflix-title`}>
       netflixroulette
     </div>
   </footer>
 );
+
+export default withStyles(containerMUI)(Footer);

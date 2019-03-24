@@ -1,14 +1,19 @@
 import React from 'react';
+
 import BgContainer from '../shared/bg-container';
+import SearchBar from './search';
+import SearchList from './search-list';
 
 import './styles.scss';
 
-const Movies = () => (
+export default () => (
   <section>
+
     <BgContainer>
-      TEST@@@@@
+      <SearchBar />
     </BgContainer>
+
+    <SearchList />
+
   </section>
 );
-
-export default Movies;

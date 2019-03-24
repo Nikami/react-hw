@@ -18,7 +18,7 @@ const POST_CSS_LOADER = {
 
 module.exports = {
   context: __dirname,
-  entry: path.join(APP_DIR, 'index.js'),
+  entry: ['babel-polyfill', path.join(APP_DIR, 'index.js')],
   output: {
     path: OUTPUT_DIR,
     filename: 'app.min.js',

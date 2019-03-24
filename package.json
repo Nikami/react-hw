@@ -1,6 +1,6 @@
 {
   "name": "react-hw",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --config ./config/webpack.config.dev.js",
     "build": "./node_modules/.bin/webpack --config ./config/webpack.config.production.js",
@@ -56,6 +56,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.5.0",
     "babel-loader": "^7.1.5",
+    "babel-polyfill": "^7.0.0-beta.3",
     "css-loader": "^1.0.1",
     "cssnano": "^4.1.10",
     "enzyme": "^3.9.0",

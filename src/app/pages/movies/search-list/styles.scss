@@ -1,0 +1,25 @@
+@import '../../../../assets/styles/utils/colors';
+@import '../../../../assets/styles/utils/functions';
+
+.search-filter {
+  background-color: $bg-filter-color;
+  padding: 5px;
+
+  &__content {
+    align-items: center;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 5px;
+  }
+
+  &__toolbar {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-gap: 7px;
+  }
+
+  &__text {
+    font-size: px2rem(12px);
+  }
+}

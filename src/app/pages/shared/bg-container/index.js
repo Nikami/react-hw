@@ -1,37 +1,26 @@
 import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
+import { containerMUI } from '../mui-styles';
 
 import './styles.scss';
 
-const styles = theme => ({
-  container: {
-    padding: theme.spacing.unit * 2,
-    marginLeft: theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit * 2,
-    width: 'auto',
-    [theme.breakpoints.up(750 + theme.spacing.unit * 2 * 2)]: {
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      width: 750,
-    },
-  },
-});
-
 const BgContainer = ({ classes, children }) => (
-  <section>
-
+  <React.Fragment>
     <div className="header">
       <div className="header__mask">
-        <div className={classes.container}>
+
+        <div className={`${classes.container} header__content`}>
+
           <p className="netflix-title">
             netflixroulette
           </p>
+
           {children}
         </div>
+
       </div>
     </div>
-
-  </section>
+  </React.Fragment>
 );
 
-export default withStyles(styles)(BgContainer);
+export default withStyles(containerMUI)(BgContainer);
