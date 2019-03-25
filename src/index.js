@@ -11,7 +11,7 @@ import './styles.scss';
 render(
   <ErrorBoundary>
     <CssBaseline />
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <App />
     </Router>
   </ErrorBoundary>,
