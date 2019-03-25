@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import BgContainer from '../../shared/components/bg-container';
+import Roulette from '../../shared/components/roulette';
 import { joinArrToStrByComma, sliceDateStrToYear } from '../../shared/pipes';
 
 import './styles.scss';
@@ -18,6 +21,21 @@ export default ({ movie }) => {
 
   return (
     <BgContainer>
+
+      <div className="details-header">
+        <Roulette />
+
+        <Link to="/" className="details-header__link">
+          <Button
+            color="primary"
+            size="small"
+            variant="contained"
+          >
+            Search
+          </Button>
+        </Link>
+      </div>
+
       <div className="details-bar">
 
         <img
@@ -32,7 +50,7 @@ export default ({ movie }) => {
 
             <Typography
               component="h3"
-              variant="h5"
+              variant="h6"
               className="details-bar__title"
             >
               {title}
@@ -46,14 +64,15 @@ export default ({ movie }) => {
 
           <Typography
             component="h6"
-            variant="subtitle1"
+            variant="subtitle2"
+            className="details-bar__genres"
           >
             {joinArrToStrByComma(genres)}
           </Typography>
 
           <Typography
             component="h6"
-            variant="subtitle1"
+            variant="subtitle2"
             gutterBottom
             className="font-bold"
           >
@@ -62,7 +81,7 @@ export default ({ movie }) => {
 
           <Typography
             component="p"
-            variant="h6"
+            variant="subtitle1"
             gutterBottom
             className="details-bar__overview"
           >
@@ -72,6 +91,7 @@ export default ({ movie }) => {
         </div>
 
       </div>
+
     </BgContainer>
   );
 };

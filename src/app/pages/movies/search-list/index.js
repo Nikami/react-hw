@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Spinner from '../../shared/components/spinner';
 import MovieList from '../../shared/components/movie-list';
 import SearchFilter from '../search-filter';
 import useFetch from '../../../hooks/use-fetch';
@@ -10,11 +11,10 @@ export default () => {
   // TODO: this is just for markup before redux
   const [data, isLoading] = useFetch(url);
 
-  // TODO: add loader
-  return isLoading ? 'Loading...' : (
+  return isLoading ? <Spinner /> : (
     <React.Fragment>
 
-      <SearchFilter />
+      <SearchFilter moviesCount={data.data.length} />
 
       <MovieList movies={data.data} />
 

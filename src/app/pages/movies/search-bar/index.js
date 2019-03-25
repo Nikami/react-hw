@@ -1,14 +1,17 @@
 import React from 'react';
-
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import BgContainer from '../../shared/components/bg-container';
+import Roulette from '../../shared/components/roulette';
 
 import './styles.scss';
 
 export default () => (
   <BgContainer>
+
+    <Roulette />
+
     <form autoComplete="off">
 
       <Typography
@@ -68,5 +71,6 @@ export default () => (
       </div>
 
     </form>
+
   </BgContainer>
 );

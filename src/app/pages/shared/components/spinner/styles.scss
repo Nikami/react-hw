@@ -1,0 +1,10 @@
+@import '../../../../../assets/styles/utils/colors';
+
+.spinner {
+  align-items: center;
+  background-color: rgba($black-color, 0.3);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+}

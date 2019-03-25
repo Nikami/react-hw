@@ -10,11 +10,6 @@ const BgContainer = ({ classes, children }) => (
       <div className="header__mask">
 
         <div className={`${classes.container} header__content`}>
-
-          <p className="netflix-title">
-            netflixroulette
-          </p>
-
           {children}
         </div>
 

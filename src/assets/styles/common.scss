@@ -20,6 +20,9 @@ body {
 
 .movies {
   grid-area: page;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .text-uppercase {
