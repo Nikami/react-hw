@@ -1,6 +1,7 @@
 {
   "name": "react-hw",
   "version": "3.0.0",
+  "homepage": "https://nikami.github.io/react-hw/",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --config ./config/webpack.config.dev.js",
     "build": "./node_modules/.bin/webpack --config ./config/webpack.config.production.js",
@@ -9,7 +10,8 @@
     "test:coverage": "jest --coverage --colors",
     "eslint": "eslint --ext=js  .",
     "eslint:fix": "eslint --ext=js  . --fix",
-    "stylelint": "stylelint \"**/*.scss\""
+    "stylelint": "stylelint \"**/*.scss\"",
+    "deploy": "gh-pages -d dist"
   },
   "husky": {
     "hooks": {
@@ -36,6 +38,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
+    "gh-pages": "^2.0.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.1",
