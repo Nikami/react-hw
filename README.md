@@ -1,3 +1,6 @@
+### LiveDemo
+https://nikami.github.io/react-hw/
+
 ### Installation
 
 React-HW requires [Node.js](https://nodejs.org/) v10.14.1+ to run.
@@ -49,4 +52,3 @@ $ npm stylelint
 ### Todos
 
  - Include CSS Modules?
- - Deploy with GH Pages?
