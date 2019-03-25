@@ -1,19 +1,11 @@
 import React from 'react';
 
-import BgContainer from '../shared/bg-container';
-import SearchBar from './search';
+import SearchBar from './search-bar';
 import SearchList from './search-list';
 
-import './styles.scss';
-
 export default () => (
-  <section>
-
-    <BgContainer>
-      <SearchBar />
-    </BgContainer>
-
+  <section className="movies">
+    <SearchBar />
     <SearchList />
-
   </section>
 );

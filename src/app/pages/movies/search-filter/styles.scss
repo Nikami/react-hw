@@ -2,15 +2,10 @@
 @import '../../../../assets/styles/utils/functions';
 
 .search-filter {
-  background-color: $bg-filter-color;
-  padding: 5px;
-
-  &__content {
-    align-items: center;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-gap: 5px;
-  }
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 5px;
 
   &__toolbar {
     align-items: center;

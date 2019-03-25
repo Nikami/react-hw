@@ -7,7 +7,7 @@ import Footer from './footer';
 
 import './styles.scss';
 
-const App = () => (
+export default () => (
   <main className="app">
     <MuiThemeProvider theme={MUI_THEME}>
       <Routes />
@@ -15,5 +15,3 @@ const App = () => (
     </MuiThemeProvider>
   </main>
 );
-
-export default App;

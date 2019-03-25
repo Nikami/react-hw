@@ -1,0 +1,10 @@
+@import '../../../../assets/styles/utils/colors';
+@import '../../../../assets/styles/utils/functions';
+
+.details-filter {
+  font-size: px2rem(12px);
+
+  &__genre {
+    color: rgba($bg-color, 0.7);
+  }
+}

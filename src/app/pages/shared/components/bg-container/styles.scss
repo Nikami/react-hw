@@ -1,4 +1,4 @@
-@import './../../../../assets/styles/utils/colors';
+@import '../../../../../assets/styles/utils/colors';
 
 .movies {
   grid-area: page;
@@ -10,8 +10,8 @@
 
   &__mask {
     background-image:
-      linear-gradient(0deg, rgba($black-color, 0) 50%, rgba($black-color, 0.5) 100%),
-      radial-gradient(50% 120%, rgba($black-color, 0) 50%, rgba($black-color, 0.7) 100%);
+      linear-gradient(0deg, transparent 0%, rgba(0, 0, 0, 0.9)),
+      radial-gradient(60% 100%, transparent 0, rgba(0, 0, 0, 0.8) 100%);
     background-size: cover;
     height: 100%;
   }

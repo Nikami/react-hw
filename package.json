@@ -8,6 +8,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors",
     "eslint": "eslint --ext=js  .",
+    "eslint:fix": "eslint --ext=js  . --fix",
     "stylelint": "stylelint \"**/*.scss\""
   },
   "husky": {

@@ -22,6 +22,7 @@ module.exports = {
   output: {
     path: OUTPUT_DIR,
     filename: 'app.min.js',
+    publicPath: '/',
   },
   resolve: {
     modules: ['node_modules', './src'],
@@ -71,8 +72,6 @@ module.exports = {
   devServer: {
     port,
     inline: true,
-    historyApiFallback: {
-      index: path.join(PUBLIC_DIR, 'index.html'),
-    },
+    historyApiFallback: true,
   },
 };

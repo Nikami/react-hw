@@ -7,7 +7,7 @@ import './styles.scss';
 
 const Footer = ({ classes }) => (
   <footer className="footer">
-    <div className={`${classes.container} netflix-title`}>
+    <div className={`${classes.container} primary-color`}>
       netflixroulette
     </div>
   </footer>

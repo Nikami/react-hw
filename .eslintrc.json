@@ -6,6 +6,7 @@
     "jest": true
   },
   "rules": {
+    "camelcase": [0, {"properties": "never", "ignoreDestructuring": true}],
     "linebreak-style": 0,
     "react/jsx-filename-extension": [
       1,

@@ -10,26 +10,34 @@ body {
   font-size: 14px;
 }
 
-.netflix-title {
-  color: $primary-color;
+.primary-color {
+  color: $primary-color !important;
+}
+
+.secondary-color {
+  color: $secondary-color !important;
+}
+
+.movies {
+  grid-area: page;
 }
 
 .text-uppercase {
-  text-transform: uppercase;
+  text-transform: uppercase !important;
 }
 
 .text-left {
-  text-align: left;
+  text-align: left !important;
 }
 
 .text-center {
-  text-align: center;
+  text-align: center !important;
 }
 
 .text-right {
-  text-align: right;
+  text-align: right !important;
 }
 
 .font-bold {
-  font-weight: 600;
+  font-weight: 600 !important;
 }
