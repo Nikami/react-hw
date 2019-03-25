@@ -51,7 +51,7 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin({ filename: 'styles.css' }),
     new HtmlWebpackPlugin({
-      title: 'React HW',
+      title: 'Netflix Roulette',
       template: path.join(PUBLIC_DIR, 'index.html'),
       minify: {
         removeComments: true,
