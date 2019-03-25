@@ -22,7 +22,7 @@ module.exports = {
   output: {
     path: OUTPUT_DIR,
     filename: 'app.min.js',
-    publicPath: '/',
+    publicPath: './',
   },
   resolve: {
     modules: ['node_modules', './src'],
