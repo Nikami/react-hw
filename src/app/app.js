@@ -1,11 +1,17 @@
 import React from 'react';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
-import './app.scss';
+import { MUI_THEME } from './mui-theme';
+import Routes from './routes';
+import Footer from './footer';
 
-const App = ({ title = 'world!' }) => (
-  <h1 style={{ color: 'teal' }}>
-    Hello, {title}
-  </h1>
+import './styles.scss';
+
+export default () => (
+  <main className="app">
+    <MuiThemeProvider theme={MUI_THEME}>
+      <Routes />
+      <Footer />
+    </MuiThemeProvider>
+  </main>
 );
-
-export default App;

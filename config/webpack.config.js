@@ -1,9 +1,9 @@
-const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const APP_DIR = path.resolve(__dirname, '../src');
+const PUBLIC_DIR = path.resolve(__dirname, '../public');
 const OUTPUT_DIR = path.resolve(__dirname, '../dist');
 const port = process.env.PORT || 3000;
 
@@ -18,10 +18,11 @@ const POST_CSS_LOADER = {
 
 module.exports = {
   context: __dirname,
-  entry: path.join(APP_DIR, 'index.js'),
+  entry: ['babel-polyfill', path.join(APP_DIR, 'index.js')],
   output: {
     path: OUTPUT_DIR,
     filename: 'app.min.js',
+    publicPath: './',
   },
   resolve: {
     modules: ['node_modules', './src'],
@@ -48,11 +49,10 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin({ filename: 'styles.css' }),
     new HtmlWebpackPlugin({
-      title: 'React HW',
-      template: path.join(APP_DIR, 'index.html'),
+      title: 'Netflix Roulette',
+      template: path.join(PUBLIC_DIR, 'index.html'),
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -72,8 +72,6 @@ module.exports = {
   devServer: {
     port,
     inline: true,
-    historyApiFallback: {
-      index: path.join(APP_DIR, 'index.html'),
-    },
+    historyApiFallback: true,
   },
 };

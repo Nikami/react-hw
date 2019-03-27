@@ -5,6 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpackCommonConfig = require('./webpack.config');
 
 process.env.NODE_ENV = 'production';
+process.env.PUBLIC_URL = '/react-hw';
 
 module.exports = merge(webpackCommonConfig, {
   mode: 'production',
@@ -23,7 +24,7 @@ module.exports = merge(webpackCommonConfig, {
     ],
   },
   plugins: [
-    new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }),
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'PUBLIC_URL']),
   ],
   devtool: 'source-map',
 });

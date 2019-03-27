@@ -1,0 +1,46 @@
+@import 'utils/colors';
+@import 'utils/fonts';
+
+#root {
+  width: 100%;
+}
+
+body {
+  font-family: $roboto;
+  font-size: 14px;
+}
+
+.primary-color {
+  color: $primary-color !important;
+}
+
+.secondary-color {
+  color: $secondary-color !important;
+}
+
+.movies {
+  grid-area: page;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.font-bold {
+  font-weight: 600 !important;
+}
