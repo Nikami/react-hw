@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailsFilter matches snapshot 1`] = `
+<WithStyles(FilterContainer)>
+  <div
+    className="details-filter font-bold"
+  >
+    Films by 
+    <span
+      className="details-filter__genre"
+    >
+      test
+    </span>
+  </div>
+</WithStyles(FilterContainer)>
+`;
