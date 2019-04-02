@@ -1,27 +1,25 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import MovieDetails from '../index';
 
-// TODO: Doesn't work!!!
-xdescribe('MovieDetails', () => {
+describe('MovieDetails', () => {
+  const url = 'https://reactjs-cdp.herokuapp.com/movies/348350';
+
   beforeEach(() => {
-    global.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-      data: [],
-    }));
+    const defaultResult = { data: [] };
+    global.fetch = jest.fn().mockImplementation(
+      () => Promise.resolve(defaultResult),
+    );
   });
 
   it('has call to movies api', () => {
-    // eslint-disable-next-line
-    const wrapper = shallow(<MovieDetails />);
+    const wrapper = mount(<MovieDetails />);
 
     jest.spyOn(global, 'fetch');
 
     expect(global.fetch).toHaveBeenCalledTimes(1);
-    expect(global.fetch).toHaveBeenCalledWith('https://reactjs-cdp.herokuapp.com/movies/348350');
+    expect(global.fetch).toHaveBeenCalledWith(url);
 
-    // process.nextTick(() => {
-    //   global.fetch.mockClear();
-    //   done();
-    // });
+    wrapper.unmount();
   });
 });
