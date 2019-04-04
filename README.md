@@ -10,25 +10,26 @@ React-HW requires [Node.js](https://nodejs.org/) v10.14.1+ to run.
 $ npm install -d
 ```
 
-#### WARNING: For node-sass you need to install [Python](https://www.python.org/downloads/) and node-gyp
+WARNING: For node-sass you need to install [Python](https://www.python.org/downloads/) and node-gyp
 
 ```sh
 $ npm i node-gyp -g
 ```
 
-#### If you have problems with pre-commit hook. Try to install lint-staged globally.
+If you have problems with pre-commit hook. Try to install lint-staged globally.
 
 ```sh
 $ npm i lint-staged -g
 ```
 
-#### Start dev server on predefined address: http://localhost:3000
+Start dev server on predefined address: http://localhost:3000
 
 ```sh
 $ npm start
 ```
 
-#### For build. Bundle in dist folder.
+#### For build. 
+Bundle in dist folder.
 
 ```sh
 $ npm build
