@@ -6,7 +6,7 @@ import Spinner from '../../shared/components/spinner';
 
 jest.useFakeTimers();
 
-describe('MovieDetails', () => {
+xdescribe('MovieDetails', () => {
   const url = 'https://reactjs-cdp.herokuapp.com/movies/348350';
   const defaultResult = { data: [] };
   const mockJsonPromise = Promise.resolve(defaultResult);
