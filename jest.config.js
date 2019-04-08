@@ -22,7 +22,7 @@ module.exports = {
   // collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ['src/modules/**/*.{js,jsx,mjs}'],
+  collectCoverageFrom: ['src/app/**/*.{js,jsx}'],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
@@ -67,7 +67,9 @@ module.exports = {
   moduleFileExtensions: ['js', 'json', 'jsx'],
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  moduleNameMapper: {
+    '\\.(css|scss)$': '<rootDir>/__mocks__/styles.mock.js',
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -88,7 +90,7 @@ module.exports = {
   // reporters: undefined,
 
   // Automatically reset mock state between every test
-  // resetMocks: false,
+  resetMocks: true,
 
   // Reset the module registry before running each individual test
   // resetModules: false,
@@ -117,7 +119,9 @@ module.exports = {
   // setupTestFrameworkScriptFile: '',
 
   // A list of paths to snapshot serializer modules Jest should use for snapshot testing
-  // snapshotSerializers: [],
+  snapshotSerializers: [
+    'enzyme-to-json/serializer',
+  ],
 
   // The test environment that will be used for testing
   testEnvironment: 'jsdom',

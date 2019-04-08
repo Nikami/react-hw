@@ -1,7 +1,7 @@
 export function sliceDateStrToYear(str) {
-  return str.substring(0, 4);
+  return str ? str.substring(0, 4) : '';
 }
 
 export function joinArrToStrByComma(genres) {
-  return genres.join(' & ');
+  return genres ? genres.join(' & ') : '';
 }
