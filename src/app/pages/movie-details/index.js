@@ -3,7 +3,7 @@ import React from 'react';
 import Spinner from '../shared/components/spinner';
 import DetailsBar from './details-bar';
 import DetailsList from './details-list';
-import useFetch from '../../hooks/use-fetch';
+import useFetch from '../../core/hooks/use-fetch';
 
 const url = 'https://reactjs-cdp.herokuapp.com/movies/348350';
 

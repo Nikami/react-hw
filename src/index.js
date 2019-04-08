@@ -3,8 +3,8 @@ import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import ErrorBoundary from './app/error-boundary';
-import App from './app/app';
+import ErrorBoundary from './app/core/error-boundary';
+import App from './app';
 
 import './styles.scss';
 
