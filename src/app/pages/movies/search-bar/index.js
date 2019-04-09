@@ -1,30 +1,77 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import _ from 'underscore';
 import connect from 'react-redux/es/connect/connect';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
+import { ROUTES } from '../../../core/config';
 import { moviesSearchAction } from '../actions';
 import BgContainer from '../../shared/components/bg-container';
 import Roulette from '../../shared/components/roulette';
 
 import './styles.scss';
 
-export const SearchBar = ({ dispatch }) => {
+const BTN_PRIMARY_COLOR = 'primary';
+const BTN_SECONDARY_COLOR = 'secondary';
+
+const SEARCH_PARAM = {
+  title: 'title',
+  genre: 'genre',
+};
+
+function searchInString(query, str) {
+  return str.toLowerCase().search(query.toLowerCase()) === 0;
+}
+
+function searchInArray(query, array) {
+  return !!array.find(i => query.toLowerCase() === i.toLowerCase());
+}
+
+export const SearchBar = ({
+  dispatch,
+  filter,
+  movies,
+  history,
+}) => {
+  const [titleBtnColor, setTitleBtnColor] = useState(
+    filter === SEARCH_PARAM.title ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
+  );
+  const [genreBtnColor, setGenreBtnColor] = useState(
+    filter === SEARCH_PARAM.genre ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
+  );
   const [query, setQuery] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(moviesSearchAction({ query }));
+    const movie = movies.find(m => (
+      filter === SEARCH_PARAM.genre
+        ? searchInArray(query, m.genres) : searchInString(query, m.title)
+    ));
+
+    if (movie) {
+      dispatch(moviesSearchAction({ movieId: movie.id }));
+      history.push(`${ROUTES.details}/${movie.id}`);
+    }
   };
   const handleSearch = _.debounce(v => setQuery(v), 300);
+  const searchByTitle = () => {
+    setTitleBtnColor(BTN_PRIMARY_COLOR);
+    setGenreBtnColor(BTN_SECONDARY_COLOR);
+    dispatch(moviesSearchAction({ param: SEARCH_PARAM.title }));
+  };
+  const searchByGenre = () => {
+    setGenreBtnColor(BTN_PRIMARY_COLOR);
+    setTitleBtnColor(BTN_SECONDARY_COLOR);
+    dispatch(moviesSearchAction({ param: SEARCH_PARAM.genre }));
+  };
 
   return (
     <BgContainer>
       <Roulette />
 
-      <form autoComplete="off" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <Typography
           component="h6"
           variant="h6"
@@ -35,11 +82,11 @@ export const SearchBar = ({ dispatch }) => {
         </Typography>
 
         <TextField
+          onChange={e => handleSearch(e.target.value)}
           id="search"
           placeholder="Search"
           className="search-field"
           margin="none"
-          onChange={e => handleSearch(e.target.value)}
         />
 
         <div className="search-actions">
@@ -53,8 +100,9 @@ export const SearchBar = ({ dispatch }) => {
             </Typography>
 
             <Button
+              color={titleBtnColor}
+              onClick={searchByTitle}
               type="button"
-              color="primary"
               size="small"
               variant="contained"
             >
@@ -62,8 +110,9 @@ export const SearchBar = ({ dispatch }) => {
             </Button>
 
             <Button
+              color={genreBtnColor}
+              onClick={searchByGenre}
               type="button"
-              color="secondary"
               size="small"
               variant="contained"
             >
@@ -86,4 +135,9 @@ export const SearchBar = ({ dispatch }) => {
   );
 };
 
-export default connect()(SearchBar);
+const mapStateToProps = state => ({
+  movies: state.movies,
+  filter: state.search.param,
+});
+
+export default withRouter(connect(mapStateToProps)(SearchBar));

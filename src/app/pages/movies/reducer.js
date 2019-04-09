@@ -39,7 +39,7 @@ export function filterReducer(state = 'vote_count', action) {
 
 export function searchReducer(state = {
   param: 'title',
-  query: '',
+  movieId: '',
 }, action) {
   switch (action.type) {
     case MOVIES_SEARCH:

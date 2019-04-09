@@ -7,12 +7,20 @@ import FilterContainer from '../../shared/components/filter-container';
 
 import './styles.scss';
 
+const FILTER_TYPE = {
+  rating: 'vote_count',
+  relDate: 'release_date',
+};
 const BTN_PRIMARY_COLOR = 'primary';
 const BTN_SECONDARY_COLOR = 'secondary';
 
-export const SearchFilter = ({ moviesCount, dispatch }) => {
-  const [ratingColor, setRatingColor] = useState(BTN_PRIMARY_COLOR);
-  const [relDateColor, setRelDateColor] = useState(BTN_SECONDARY_COLOR);
+export const SearchFilter = ({ moviesCount, dispatch, filter }) => {
+  const [ratingColor, setRatingColor] = useState(
+    FILTER_TYPE.rating === filter ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
+  );
+  const [relDateColor, setRelDateColor] = useState(
+    FILTER_TYPE.relDate === filter ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
+  );
 
   const filterByRating = () => {
     setRelDateColor(BTN_SECONDARY_COLOR);
@@ -36,11 +44,11 @@ export const SearchFilter = ({ moviesCount, dispatch }) => {
           Sort by
         </div>
 
-        <Button color={relDateColor} size="small" onClick={filterByRelDate}>
+        <Button color={relDateColor} onClick={filterByRelDate} size="small">
           release date
         </Button>
 
-        <Button color={ratingColor} size="small" onClick={filterByRating}>
+        <Button color={ratingColor} onClick={filterByRating} size="small">
           rating
         </Button>
       </div>
@@ -48,4 +56,8 @@ export const SearchFilter = ({ moviesCount, dispatch }) => {
   );
 };
 
-export default connect()(SearchFilter);
+const mapStateToProps = state => ({
+  filter: state.filter,
+});
+
+export default connect(mapStateToProps)(SearchFilter);

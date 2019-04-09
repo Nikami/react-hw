@@ -1,46 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import _ from 'underscore';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import { ROUTES } from '../../../core/config';
+import { joinArrToStrByComma, sliceDateStrToYear } from '../../shared/pipes';
 import BgContainer from '../../shared/components/bg-container';
 import Roulette from '../../shared/components/roulette';
-import { joinArrToStrByComma, sliceDateStrToYear } from '../../shared/pipes';
 
 import './styles.scss';
 
-export default ({ movie }) => {
-  const {
-    title,
-    vote_count,
-    genres,
-    release_date,
-    poster_path,
-    overview,
-  } = movie;
+export default ({ movie }) => (
+  <BgContainer>
 
-  return (
-    <BgContainer>
+    <div className="details-header">
+      <Roulette />
 
-      <div className="details-header">
-        <Roulette />
+      <Link to={ROUTES.movies} className="details-header__link">
+        <Button
+          color="primary"
+          size="small"
+          variant="contained"
+        >
+          Search
+        </Button>
+      </Link>
+    </div>
 
-        <Link to="/" className="details-header__link">
-          <Button
-            color="primary"
-            size="small"
-            variant="contained"
-          >
-            Search
-          </Button>
-        </Link>
-      </div>
-
+    {!_.isEmpty(movie) && (
       <div className="details-bar">
 
         <img
-          src={poster_path}
-          alt={title}
+          src={movie.poster_path}
+          alt={movie.title}
           className="details-bar__poster"
         />
 
@@ -53,11 +46,11 @@ export default ({ movie }) => {
               variant="h6"
               className="details-bar__title"
             >
-              {title}
+              {movie.title}
             </Typography>
 
             <div className="details-bar__rating">
-              {vote_count}
+              {movie.vote_count}
             </div>
 
           </div>
@@ -67,7 +60,7 @@ export default ({ movie }) => {
             variant="subtitle2"
             className="details-bar__genres"
           >
-            {joinArrToStrByComma(genres)}
+            {joinArrToStrByComma(movie.genres)}
           </Typography>
 
           <Typography
@@ -76,7 +69,7 @@ export default ({ movie }) => {
             gutterBottom
             className="font-bold"
           >
-            {sliceDateStrToYear(release_date)}
+            {sliceDateStrToYear(movie.release_date)}
           </Typography>
 
           <Typography
@@ -85,13 +78,13 @@ export default ({ movie }) => {
             gutterBottom
             className="details-bar__overview"
           >
-            {overview}
+            {movie.overview}
           </Typography>
 
         </div>
 
       </div>
+    )}
 
-    </BgContainer>
-  );
-};
+  </BgContainer>
+);

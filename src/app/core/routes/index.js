@@ -1,11 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
+import { ROUTES } from '../config';
 import Movies from '../../pages/movies';
 import MovieDetails from '../../pages/movie-details';
 
 export default () => (
   <Switch>
-    <Route path="/" exact component={Movies} />
-    <Route path="/details" exact component={MovieDetails} />
+    <Route path={ROUTES.movies} exact component={Movies} />
+    <Route path={`${ROUTES.details}/:id`} exact component={MovieDetails} />
   </Switch>
 );
