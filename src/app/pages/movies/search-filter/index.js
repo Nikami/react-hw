@@ -1,37 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
+import connect from 'react-redux/es/connect/connect';
+
+import { moviesFilterAction } from '../actions';
 import FilterContainer from '../../shared/components/filter-container';
 
 import './styles.scss';
 
-export default ({ moviesCount }) => (
-  <FilterContainer contentClasses="search-filter">
+const BTN_PRIMARY_COLOR = 'primary';
+const BTN_SECONDARY_COLOR = 'secondary';
 
-    <div className="search-filter__text font-bold">
-      {moviesCount} movies found
-    </div>
+export const SearchFilter = ({ moviesCount, dispatch }) => {
+  const [ratingColor, setRatingColor] = useState(BTN_PRIMARY_COLOR);
+  const [relDateColor, setRelDateColor] = useState(BTN_SECONDARY_COLOR);
 
-    <div className="search-filter__toolbar">
+  const filterByRating = () => {
+    setRelDateColor(BTN_SECONDARY_COLOR);
+    setRatingColor(BTN_PRIMARY_COLOR);
+    dispatch(moviesFilterAction('vote_count'));
+  };
+  const filterByRelDate = () => {
+    setRelDateColor(BTN_PRIMARY_COLOR);
+    setRatingColor(BTN_SECONDARY_COLOR);
+    dispatch(moviesFilterAction('release_date'));
+  };
 
-      <div className="search-filter__text text-right font-bold">
-        Sort by
+  return (
+    <FilterContainer contentClasses="search-filter">
+      <div className="search-filter__text font-bold">
+        {moviesCount} movies found
       </div>
 
-      <Button
-        color="secondary"
-        size="small"
-      >
-        release date
-      </Button>
+      <div className="search-filter__toolbar">
+        <div className="search-filter__text text-right font-bold">
+          Sort by
+        </div>
 
-      <Button
-        color="primary"
-        size="small"
-      >
-        rating
-      </Button>
+        <Button color={relDateColor} size="small" onClick={filterByRelDate}>
+          release date
+        </Button>
 
-    </div>
+        <Button color={ratingColor} size="small" onClick={filterByRating}>
+          rating
+        </Button>
+      </div>
+    </FilterContainer>
+  );
+};
 
-  </FilterContainer>
-);
+export default connect()(SearchFilter);

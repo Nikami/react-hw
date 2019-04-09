@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchMovies } from '../actions';
-import { moviesLoadingSelector, moviesSelector } from '../../shared/selectors';
+import { moviesFilterSelector } from '../selectors';
 
 import Spinner from '../../shared/components/spinner';
 import SearchFilter from '../search-filter';
@@ -26,8 +26,8 @@ class SearchList extends Component {
 }
 
 const mapStateToProps = state => ({
-  movies: moviesSelector(state),
-  isLoading: moviesLoadingSelector(state),
+  movies: moviesFilterSelector(state),
+  isLoading: state.moviesLoading,
 });
 
 const mapDispatchToProps = { fetchMovies };
