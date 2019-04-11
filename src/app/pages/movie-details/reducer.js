@@ -1,4 +1,5 @@
 import {
+  MOVIE_CLEAR_ACTION,
   MOVIE_FETCH_ERROR,
   MOVIE_FETCH_REQUEST,
   MOVIE_FETCH_SUCCESS,
@@ -9,6 +10,8 @@ export function movieReducer(state = null, action) {
     case MOVIE_FETCH_SUCCESS:
     case MOVIE_FETCH_ERROR:
       return action.payload;
+    case MOVIE_CLEAR_ACTION:
+      return null;
     default:
       return state;
   }

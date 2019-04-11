@@ -7,7 +7,9 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
 import { ROUTES } from '../../../core/config';
-import { moviesSearchAction } from '../actions';
+import { searchInArray, searchInString } from '../../shared/utils';
+import { moviesSearchAction } from '../../shared/actions/movies';
+import { movieClearAction } from '../../shared/actions/movie';
 import BgContainer from '../../shared/components/bg-container';
 import Roulette from '../../shared/components/roulette';
 
@@ -21,50 +23,48 @@ const SEARCH_PARAM = {
   genre: 'genre',
 };
 
-function searchInString(query, str) {
-  return str.toLowerCase().search(query.toLowerCase()) === 0;
-}
-
-function searchInArray(query, array) {
-  return !!array.find(i => query.toLowerCase() === i.toLowerCase());
-}
-
 export const SearchBar = ({
   dispatch,
-  filter,
+  search,
   movies,
   history,
 }) => {
   const [titleBtnColor, setTitleBtnColor] = useState(
-    filter === SEARCH_PARAM.title ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
+    search === SEARCH_PARAM.title ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
   );
   const [genreBtnColor, setGenreBtnColor] = useState(
-    filter === SEARCH_PARAM.genre ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
+    search === SEARCH_PARAM.genre ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
   );
   const [query, setQuery] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const movie = movies.find(m => (
-      filter === SEARCH_PARAM.genre
-        ? searchInArray(query, m.genres) : searchInString(query, m.title)
+      search === SEARCH_PARAM.genre
+        ? searchInArray(query, m.genres)
+        : searchInString(query, m.title)
     ));
 
+    dispatch(movieClearAction());
+
     if (movie) {
-      dispatch(moviesSearchAction({ movieId: movie.id }));
       history.push(`${ROUTES.details}/${movie.id}`);
+    } else {
+      history.push(`${ROUTES.details}`);
     }
   };
+
   const handleSearch = _.debounce(v => setQuery(v), 300);
   const searchByTitle = () => {
     setTitleBtnColor(BTN_PRIMARY_COLOR);
     setGenreBtnColor(BTN_SECONDARY_COLOR);
-    dispatch(moviesSearchAction({ param: SEARCH_PARAM.title }));
+    dispatch(moviesSearchAction(SEARCH_PARAM.title));
   };
   const searchByGenre = () => {
     setGenreBtnColor(BTN_PRIMARY_COLOR);
     setTitleBtnColor(BTN_SECONDARY_COLOR);
-    dispatch(moviesSearchAction({ param: SEARCH_PARAM.genre }));
+    dispatch(moviesSearchAction(SEARCH_PARAM.genre));
   };
 
   return (
@@ -137,7 +137,7 @@ export const SearchBar = ({
 
 const mapStateToProps = state => ({
   movies: state.movies,
-  filter: state.search.param,
+  search: state.search,
 });
 
 export default withRouter(connect(mapStateToProps)(SearchBar));

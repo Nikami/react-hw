@@ -1,5 +1,5 @@
 import React from 'react';
-import { joinArrToStrByComma, sliceDateStrToYear } from '../../pipes';
+import { joinArrToStrByComma, sliceDateStrToYear } from '../../utils';
 
 import './styles.scss';
 

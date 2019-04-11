@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchMovies } from '../actions';
+import { fetchMovies } from '../../shared/actions/movies';
 import { moviesFilterSelector } from '../selectors';
 
 import Spinner from '../../shared/components/spinner';

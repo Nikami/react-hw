@@ -37,13 +37,10 @@ export function filterReducer(state = 'vote_count', action) {
   }
 }
 
-export function searchReducer(state = {
-  param: 'title',
-  movieId: '',
-}, action) {
+export function searchReducer(state = 'title', action) {
   switch (action.type) {
     case MOVIES_SEARCH:
-      return { ...state, ...action.payload };
+      return action.payload;
     default:
       return state;
   }

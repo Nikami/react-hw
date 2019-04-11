@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import { ROUTES } from '../../../core/config';
-import { joinArrToStrByComma, sliceDateStrToYear } from '../../shared/pipes';
+import { joinArrToStrByComma, sliceDateStrToYear } from '../../shared/utils';
 import BgContainer from '../../shared/components/bg-container';
 import Roulette from '../../shared/components/roulette';
 

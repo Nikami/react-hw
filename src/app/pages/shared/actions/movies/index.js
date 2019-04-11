@@ -1,11 +1,11 @@
+import { BASE_URL } from '../../../../core/config';
 import {
   MOVIES_FETCH_ERROR,
   MOVIES_FETCH_REQUEST,
   MOVIES_FETCH_SUCCESS,
   MOVIES_FILTER,
   MOVIES_SEARCH,
-} from '../shared/types';
-import { BASE_URL } from '../../core/config';
+} from '../../types';
 
 export const moviesRequestAction = () => ({
   type: MOVIES_FETCH_REQUEST,

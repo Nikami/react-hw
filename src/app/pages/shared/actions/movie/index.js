@@ -1,5 +1,10 @@
-import { BASE_URL } from '../../core/config';
-import { MOVIE_FETCH_ERROR, MOVIE_FETCH_REQUEST, MOVIE_FETCH_SUCCESS } from '../shared/types';
+import { BASE_URL } from '../../../../core/config';
+import {
+  MOVIE_CLEAR_ACTION,
+  MOVIE_FETCH_ERROR,
+  MOVIE_FETCH_REQUEST,
+  MOVIE_FETCH_SUCCESS,
+} from '../../types';
 
 export const movieRequestAction = () => ({
   type: MOVIE_FETCH_REQUEST,
@@ -13,6 +18,10 @@ export const movieFetchSuccessAction = payload => ({
 export const movieFetchErrorAction = payload => ({
   type: MOVIE_FETCH_ERROR,
   payload,
+});
+
+export const movieClearAction = () => ({
+  type: MOVIE_CLEAR_ACTION,
 });
 
 export const fetchMovie = id => async (dispatch) => {
