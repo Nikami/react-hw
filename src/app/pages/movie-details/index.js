@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 import connect from 'react-redux/es/connect/connect';
 
 import { fetchMovies } from '../shared/actions/movies';
@@ -9,29 +10,30 @@ import Spinner from '../shared/components/spinner';
 import DetailsBar from './details-bar';
 import DetailsList from './details-list';
 
-export class MovieDetails extends Component {
-  componentDidMount() {
-    const { match, movies } = this.props;
+const MovieDetails = ({
+  match,
+  isLoading,
+  movie,
+  movies,
+  ...props
+}) => {
+  useEffect(() => {
     if (match.params.id) {
-      this.props.fetchMovie(match.params.id);
+      props.fetchMovie(match.params.id);
 
       if (movies.length === 0) {
-        this.props.fetchMovies();
+        props.fetchMovies();
       }
     }
-  }
+  }, [match.params.id]);
 
-  render() {
-    const { isLoading, movie, movies } = this.props;
-
-    return isLoading ? <Spinner /> : (
-      <section className="movies">
-        <DetailsBar movie={movie} />
-        <DetailsList movies={movies} />
-      </section>
-    );
-  }
-}
+  return isLoading ? <Spinner /> : (
+    <section className="movies">
+      <DetailsBar movie={movie} />
+      <DetailsList movies={movies} />
+    </section>
+  );
+};
 
 const mapStateToProps = state => ({
   movie: state.movie,
@@ -40,7 +42,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = { fetchMovie, fetchMovies };
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(MovieDetails),
-);
+export default compose(
+  withRouter,
+  withConnect,
+)(MovieDetails);

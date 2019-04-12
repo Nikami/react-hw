@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import _ from 'underscore';
 import connect from 'react-redux/es/connect/connect';
@@ -24,10 +25,10 @@ const SEARCH_PARAM = {
 };
 
 export const SearchBar = ({
-  dispatch,
   search,
   movies,
   history,
+  ...props
 }) => {
   const [titleBtnColor, setTitleBtnColor] = useState(
     search === SEARCH_PARAM.title ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
@@ -46,7 +47,7 @@ export const SearchBar = ({
         : searchInString(query, m.title)
     ));
 
-    dispatch(movieClearAction());
+    props.movieClearAction();
 
     if (movie) {
       history.push(`${ROUTES.details}/${movie.id}`);
@@ -59,12 +60,12 @@ export const SearchBar = ({
   const searchByTitle = () => {
     setTitleBtnColor(BTN_PRIMARY_COLOR);
     setGenreBtnColor(BTN_SECONDARY_COLOR);
-    dispatch(moviesSearchAction(SEARCH_PARAM.title));
+    props.moviesSearchAction(SEARCH_PARAM.title);
   };
   const searchByGenre = () => {
     setGenreBtnColor(BTN_PRIMARY_COLOR);
     setTitleBtnColor(BTN_SECONDARY_COLOR);
-    dispatch(moviesSearchAction(SEARCH_PARAM.genre));
+    props.moviesSearchAction(SEARCH_PARAM.genre);
   };
 
   return (
@@ -140,4 +141,10 @@ const mapStateToProps = state => ({
   search: state.search,
 });
 
-export default withRouter(connect(mapStateToProps)(SearchBar));
+const mapDispatchToProps = { moviesSearchAction, movieClearAction };
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+export default compose(
+  withRouter,
+  withConnect,
+)(SearchBar);
