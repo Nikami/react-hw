@@ -136,9 +136,9 @@ export const SearchBar = ({
   );
 };
 
-const mapStateToProps = state => ({
-  movies: state.movies,
-  search: state.search,
+const mapStateToProps = ({ movies, filters }) => ({
+  movies: movies.data,
+  search: filters.search,
 });
 
 const mapDispatchToProps = { moviesSearchAction, movieClearAction };

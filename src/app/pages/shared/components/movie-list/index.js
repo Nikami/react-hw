@@ -11,9 +11,8 @@ const MovieList = ({ movies, classes }) => (
   <div className={`${classes.container} movie-list`}>
     {movies.map(movie => (
 
-      <Link to={`${ROUTES.details}/${movie.id}`} className="link-reset">
+      <Link key={movie.id} to={`${ROUTES.details}/${movie.id}`} className="link-reset">
         <Movie
-          key={movie.id}
           id={movie.id}
           poster_path={movie.poster_path}
           title={movie.title}

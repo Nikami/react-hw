@@ -14,7 +14,7 @@ const FILTER_TYPE = {
 const BTN_PRIMARY_COLOR = 'primary';
 const BTN_SECONDARY_COLOR = 'secondary';
 
-export const SearchFilter = ({ moviesCount, dispatch, filter }) => {
+export const SearchFilter = ({ moviesCount, filter, ...props }) => {
   const [ratingColor, setRatingColor] = useState(
     FILTER_TYPE.rating === filter ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
   );
@@ -25,12 +25,12 @@ export const SearchFilter = ({ moviesCount, dispatch, filter }) => {
   const filterByRating = () => {
     setRelDateColor(BTN_SECONDARY_COLOR);
     setRatingColor(BTN_PRIMARY_COLOR);
-    dispatch(moviesFilterAction('vote_count'));
+    props.moviesFilterAction(FILTER_TYPE.vote_count);
   };
   const filterByRelDate = () => {
     setRelDateColor(BTN_PRIMARY_COLOR);
     setRatingColor(BTN_SECONDARY_COLOR);
-    dispatch(moviesFilterAction('release_date'));
+    props.moviesFilterAction(FILTER_TYPE.relDate);
   };
 
   return (
@@ -56,8 +56,8 @@ export const SearchFilter = ({ moviesCount, dispatch, filter }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  filter: state.filter,
+const mapStateToProps = ({ filters }) => ({
+  filter: filters.filter,
 });
 
-export default connect(mapStateToProps)(SearchFilter);
+export default connect(mapStateToProps, { moviesFilterAction })(SearchFilter);

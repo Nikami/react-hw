@@ -1,6 +1,5 @@
-export const moviesByGenreSelector = (state) => {
-  const { movies, movie } = state;
-  return movie
-    ? movies.filter(m => m.genres.some(g => movie.genres.includes(g)))
-    : [];
-};
+export const moviesByGenreSelector = ({ movies, movie }) => (
+  movie ? movies.data.filter(
+    m => m.genres.some(g => movie.data.genres.includes(g)),
+  ) : []
+);

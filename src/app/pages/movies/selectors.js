@@ -1,6 +1,6 @@
-export const moviesFilterSelector = (state) => {
-  const { movies, filter } = state;
-  return [...movies].sort((a, b) => {
+export const moviesFilterSelector = ({ movies, filters }) => {
+  const { filter } = filters.filter;
+  return [...movies.data].sort((a, b) => {
     if (a[filter] > b[filter]) {
       return 1;
     }

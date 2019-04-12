@@ -36,8 +36,8 @@ const MovieDetails = ({
 };
 
 const mapStateToProps = state => ({
-  movie: state.movie,
-  isLoading: state.movieLoading,
+  movie: state.movie.data,
+  isLoading: state.movie.isLoading,
   movies: moviesByGenreSelector(state),
 });
 

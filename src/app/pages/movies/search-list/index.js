@@ -27,7 +27,7 @@ class SearchList extends Component {
 
 const mapStateToProps = state => ({
   movies: moviesFilterSelector(state),
-  isLoading: state.moviesLoading,
+  isLoading: state.movies.isLoading,
 });
 
 const mapDispatchToProps = { fetchMovies };

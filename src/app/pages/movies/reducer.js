@@ -6,41 +6,33 @@ import {
   MOVIES_SEARCH,
 } from '../shared/types';
 
-export function moviesReducer(state = [], action) {
-  switch (action.type) {
-    case MOVIES_FETCH_SUCCESS:
-    case MOVIES_FETCH_ERROR:
-      return action.payload;
-    default:
-      return state;
-  }
-}
+const moviesInitialState = {
+  data: [],
+  isLoading: false,
+};
 
-export function moviesLoadingReducer(state = false, action) {
+export function moviesReducer(state = moviesInitialState, action) {
   switch (action.type) {
     case MOVIES_FETCH_REQUEST:
-      return true;
+      return { isLoading: true, ...state };
     case MOVIES_FETCH_SUCCESS:
     case MOVIES_FETCH_ERROR:
-      return false;
+      return { data: action.payload, isLoading: false };
     default:
       return state;
   }
 }
 
-export function filterReducer(state = 'vote_count', action) {
+const filtersInitialState = {
+  filter: 'vote_count',
+  search: 'title',
+};
+export function filtersReducer(state = filtersInitialState, action) {
   switch (action.type) {
     case MOVIES_FILTER:
-      return action.payload;
-    default:
-      return state;
-  }
-}
-
-export function searchReducer(state = 'title', action) {
-  switch (action.type) {
+      return { filter: action.payload, ...state };
     case MOVIES_SEARCH:
-      return action.payload;
+      return { search: action.payload, ...state };
     default:
       return state;
   }

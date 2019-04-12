@@ -5,25 +5,20 @@ import {
   MOVIE_FETCH_SUCCESS,
 } from '../shared/types';
 
-export function movieReducer(state = null, action) {
-  switch (action.type) {
-    case MOVIE_FETCH_SUCCESS:
-    case MOVIE_FETCH_ERROR:
-      return action.payload;
-    case MOVIE_CLEAR_ACTION:
-      return null;
-    default:
-      return state;
-  }
-}
+const initialState = {
+  data: null,
+  isLoading: false,
+};
 
-export function movieLoadingReducer(state = false, action) {
+export function movieReducer(state = initialState, action) {
   switch (action.type) {
     case MOVIE_FETCH_REQUEST:
-      return true;
+      return { isLoading: true, ...state };
     case MOVIE_FETCH_SUCCESS:
     case MOVIE_FETCH_ERROR:
-      return false;
+      return { data: action.payload, isLoading: false };
+    case MOVIE_CLEAR_ACTION:
+      return { data: null, ...state };
     default:
       return state;
   }

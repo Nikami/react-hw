@@ -1,21 +1,14 @@
 import { combineReducers } from 'redux';
 import {
-  filterReducer,
-  moviesLoadingReducer,
   moviesReducer,
-  searchReducer,
+  filtersReducer,
 } from '../../pages/movies/reducer';
-import { movieLoadingReducer, movieReducer } from '../../pages/movie-details/reducer';
+import { movieReducer } from '../../pages/movie-details/reducer';
 
 export const rootReducer = combineReducers({
   movies: moviesReducer,
-  moviesLoading: moviesLoadingReducer,
-
-  filter: filterReducer,
-  search: searchReducer,
-
   movie: movieReducer,
-  movieLoading: movieLoadingReducer,
+  filters: filtersReducer,
 });
 
 export default rootReducer;
