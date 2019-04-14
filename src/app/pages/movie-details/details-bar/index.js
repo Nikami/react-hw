@@ -50,7 +50,7 @@ export default ({ movie }) => (
             </Typography>
 
             <div className="details-bar__rating">
-              {movie.vote_count}
+              {movie.vote_average}
             </div>
 
           </div>

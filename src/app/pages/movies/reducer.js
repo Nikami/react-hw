@@ -14,7 +14,7 @@ const moviesInitialState = {
 export function moviesReducer(state = moviesInitialState, action) {
   switch (action.type) {
     case MOVIES_FETCH_REQUEST:
-      return { isLoading: true, ...state };
+      return { ...state, isLoading: true };
     case MOVIES_FETCH_SUCCESS:
     case MOVIES_FETCH_ERROR:
       return { data: action.payload, isLoading: false };
@@ -30,9 +30,9 @@ const filtersInitialState = {
 export function filtersReducer(state = filtersInitialState, action) {
   switch (action.type) {
     case MOVIES_FILTER:
-      return { filter: action.payload, ...state };
+      return { ...state, filter: action.payload };
     case MOVIES_SEARCH:
-      return { search: action.payload, ...state };
+      return { ...state, search: action.payload };
     default:
       return state;
   }

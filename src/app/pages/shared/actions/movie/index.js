@@ -1,39 +1,39 @@
 import { BASE_URL } from '../../../../core/config';
 import {
-  MOVIE_CLEAR_ACTION,
+  MOVIE_CLEAR,
   MOVIE_FETCH_ERROR,
   MOVIE_FETCH_REQUEST,
   MOVIE_FETCH_SUCCESS,
 } from '../../types';
 
-export const movieRequestAction = () => ({
+export const doMovieRequest = () => ({
   type: MOVIE_FETCH_REQUEST,
 });
 
-export const movieFetchSuccessAction = payload => ({
+export const doMovieFetchSuccess = payload => ({
   type: MOVIE_FETCH_SUCCESS,
   payload,
 });
 
-export const movieFetchErrorAction = payload => ({
+export const doMovieFetchError = payload => ({
   type: MOVIE_FETCH_ERROR,
   payload,
 });
 
-export const movieClearAction = () => ({
-  type: MOVIE_CLEAR_ACTION,
+export const doMovieClear = () => ({
+  type: MOVIE_CLEAR,
 });
 
 export const fetchMovie = id => async (dispatch) => {
-  dispatch(movieRequestAction());
+  dispatch(doMovieRequest());
 
   try {
     const response = await fetch(`${BASE_URL}movies/${id}`);
     const data = await response.json();
-    dispatch(movieFetchSuccessAction(data));
+    dispatch(doMovieFetchSuccess(data));
   } catch (e) {
     // eslint-disable-next-line
     console.error(e);
-    dispatch(movieFetchErrorAction(null));
+    dispatch(doMovieFetchError(null));
   }
 };

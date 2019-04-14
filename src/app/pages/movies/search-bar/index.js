@@ -9,8 +9,8 @@ import Typography from '@material-ui/core/Typography';
 
 import { ROUTES } from '../../../core/config';
 import { searchInArray, searchInString } from '../../shared/utils';
-import { moviesSearchAction } from '../../shared/actions/movies';
-import { movieClearAction } from '../../shared/actions/movie';
+import { doMoviesSearch } from '../../shared/actions/movies';
+import { doMovieClear } from '../../shared/actions/movie';
 import BgContainer from '../../shared/components/bg-container';
 import Roulette from '../../shared/components/roulette';
 
@@ -47,7 +47,7 @@ export const SearchBar = ({
         : searchInString(query, m.title)
     ));
 
-    props.movieClearAction();
+    props.doMovieClear();
 
     if (movie) {
       history.push(`${ROUTES.details}/${movie.id}`);
@@ -60,12 +60,12 @@ export const SearchBar = ({
   const searchByTitle = () => {
     setTitleBtnColor(BTN_PRIMARY_COLOR);
     setGenreBtnColor(BTN_SECONDARY_COLOR);
-    props.moviesSearchAction(SEARCH_PARAM.title);
+    props.doMoviesSearch(SEARCH_PARAM.title);
   };
   const searchByGenre = () => {
     setGenreBtnColor(BTN_PRIMARY_COLOR);
     setTitleBtnColor(BTN_SECONDARY_COLOR);
-    props.moviesSearchAction(SEARCH_PARAM.genre);
+    props.doMoviesSearch(SEARCH_PARAM.genre);
   };
 
   return (
@@ -141,7 +141,7 @@ const mapStateToProps = ({ movies, filters }) => ({
   search: filters.search,
 });
 
-const mapDispatchToProps = { moviesSearchAction, movieClearAction };
+const mapDispatchToProps = { doMoviesSearch, doMovieClear };
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(

@@ -1,5 +1,5 @@
 import {
-  MOVIE_CLEAR_ACTION,
+  MOVIE_CLEAR,
   MOVIE_FETCH_ERROR,
   MOVIE_FETCH_REQUEST,
   MOVIE_FETCH_SUCCESS,
@@ -13,12 +13,12 @@ const initialState = {
 export function movieReducer(state = initialState, action) {
   switch (action.type) {
     case MOVIE_FETCH_REQUEST:
-      return { isLoading: true, ...state };
+      return { ...state, isLoading: true };
     case MOVIE_FETCH_SUCCESS:
     case MOVIE_FETCH_ERROR:
       return { data: action.payload, isLoading: false };
-    case MOVIE_CLEAR_ACTION:
-      return { data: null, ...state };
+    case MOVIE_CLEAR:
+      return { ...state, data: null };
     default:
       return state;
   }

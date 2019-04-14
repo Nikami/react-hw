@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import connect from 'react-redux/es/connect/connect';
 
-import { moviesFilterAction } from '../../shared/actions/movies';
+import { doMoviesFilter } from '../../shared/actions/movies';
 import FilterContainer from '../../shared/components/filter-container';
 
 import './styles.scss';
@@ -25,12 +25,12 @@ export const SearchFilter = ({ moviesCount, filter, ...props }) => {
   const filterByRating = () => {
     setRelDateColor(BTN_SECONDARY_COLOR);
     setRatingColor(BTN_PRIMARY_COLOR);
-    props.moviesFilterAction(FILTER_TYPE.vote_count);
+    props.doMoviesFilter(FILTER_TYPE.rating);
   };
   const filterByRelDate = () => {
     setRelDateColor(BTN_PRIMARY_COLOR);
     setRatingColor(BTN_SECONDARY_COLOR);
-    props.moviesFilterAction(FILTER_TYPE.relDate);
+    props.doMoviesFilter(FILTER_TYPE.relDate);
   };
 
   return (
@@ -60,4 +60,4 @@ const mapStateToProps = ({ filters }) => ({
   filter: filters.filter,
 });
 
-export default connect(mapStateToProps, { moviesFilterAction })(SearchFilter);
+export default connect(mapStateToProps, { doMoviesFilter })(SearchFilter);
