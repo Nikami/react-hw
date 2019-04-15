@@ -44,3 +44,16 @@ body {
 .font-bold {
   font-weight: 600 !important;
 }
+
+.not-found {
+  align-items: center;
+  color: $secondary-color !important;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.link-reset {
+  text-decoration: none;
+  color: inherit;
+}

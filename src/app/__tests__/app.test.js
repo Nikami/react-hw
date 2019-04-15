@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme/build';
-import App from '../app';
-import Routes from '../routes';
+import App from '../index';
+import Routes from '../core/routes';
 import Footer from '../footer';
 
 describe('DetailsList', () => {

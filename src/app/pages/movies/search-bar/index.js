@@ -1,76 +1,150 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
+import _ from 'underscore';
+import connect from 'react-redux/es/connect/connect';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+
+import { ROUTES } from '../../../core/config';
+import { searchInArray, searchInString } from '../../shared/utils';
+import { doMoviesSearch } from '../../shared/actions/movies';
+import { doMovieClear } from '../../shared/actions/movie';
 import BgContainer from '../../shared/components/bg-container';
 import Roulette from '../../shared/components/roulette';
 
 import './styles.scss';
 
-export default () => (
-  <BgContainer>
+const BTN_PRIMARY_COLOR = 'primary';
+const BTN_SECONDARY_COLOR = 'secondary';
 
-    <Roulette />
+const SEARCH_PARAM = {
+  title: 'title',
+  genre: 'genre',
+};
 
-    <form autoComplete="off">
+export const SearchBar = ({
+  search,
+  movies,
+  history,
+  ...props
+}) => {
+  const [titleBtnColor, setTitleBtnColor] = useState(
+    search === SEARCH_PARAM.title ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
+  );
+  const [genreBtnColor, setGenreBtnColor] = useState(
+    search === SEARCH_PARAM.genre ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
+  );
+  const [query, setQuery] = useState('');
 
-      <Typography
-        component="h6"
-        variant="h6"
-        gutterBottom
-        className="text-uppercase"
-      >
-        Find your movie
-      </Typography>
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-      <TextField
-        id="search"
-        placeholder="Search"
-        className="search-field"
-        margin="none"
-      />
+    const movie = movies.find(m => (
+      search === SEARCH_PARAM.genre
+        ? searchInArray(query, m.genres)
+        : searchInString(query, m.title)
+    ));
 
-      <div className="search-actions">
+    props.doMovieClear();
 
-        <div className="search-actions__toolbar">
+    if (movie) {
+      history.push(`${ROUTES.details}/${movie.id}`);
+    } else {
+      history.push(`${ROUTES.details}`);
+    }
+  };
 
-          <Typography
-            component="span"
-            variant="subtitle2"
-            className="text-uppercase"
-          >
-            Search&nbsp;By
-          </Typography>
+  const handleSearch = _.debounce(v => setQuery(v), 300);
+  const searchByTitle = () => {
+    setTitleBtnColor(BTN_PRIMARY_COLOR);
+    setGenreBtnColor(BTN_SECONDARY_COLOR);
+    props.doMoviesSearch(SEARCH_PARAM.title);
+  };
+  const searchByGenre = () => {
+    setGenreBtnColor(BTN_PRIMARY_COLOR);
+    setTitleBtnColor(BTN_SECONDARY_COLOR);
+    props.doMoviesSearch(SEARCH_PARAM.genre);
+  };
 
-          <Button
-            color="primary"
-            size="small"
-            variant="contained"
-          >
-            Title
-          </Button>
+  return (
+    <BgContainer>
+      <Roulette />
 
-          <Button
-            color="secondary"
-            size="small"
-            variant="contained"
-          >
-            Genre
-          </Button>
-
-        </div>
-
-        <Button
-          color="primary"
-          size="medium"
-          variant="contained"
+      <form onSubmit={handleSubmit}>
+        <Typography
+          component="h6"
+          variant="h6"
+          gutterBottom
+          className="text-uppercase"
         >
-          Search
-        </Button>
+          Find your movie
+        </Typography>
 
-      </div>
+        <TextField
+          onChange={e => handleSearch(e.target.value)}
+          id="search"
+          placeholder="Search"
+          className="search-field"
+          margin="none"
+        />
 
-    </form>
+        <div className="search-actions">
+          <div className="search-actions__toolbar">
+            <Typography
+              component="span"
+              variant="subtitle2"
+              className="text-uppercase"
+            >
+              Search&nbsp;By
+            </Typography>
 
-  </BgContainer>
-);
+            <Button
+              color={titleBtnColor}
+              onClick={searchByTitle}
+              type="button"
+              size="small"
+              variant="contained"
+            >
+              Title
+            </Button>
+
+            <Button
+              color={genreBtnColor}
+              onClick={searchByGenre}
+              type="button"
+              size="small"
+              variant="contained"
+            >
+              Genre
+            </Button>
+
+          </div>
+
+          <Button
+            type="submit"
+            color="primary"
+            size="medium"
+            variant="contained"
+          >
+            Search
+          </Button>
+        </div>
+      </form>
+    </BgContainer>
+  );
+};
+
+const mapStateToProps = ({ movies, filters }) => ({
+  movies: movies.data,
+  search: filters.search,
+});
+
+const mapDispatchToProps = { doMoviesSearch, doMovieClear };
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+export default compose(
+  withRouter,
+  withConnect,
+)(SearchBar);

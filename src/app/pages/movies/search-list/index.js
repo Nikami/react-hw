@@ -1,23 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { fetchMovies } from '../../shared/actions/movies';
+import { moviesFilterSelector } from '../selectors';
 
 import Spinner from '../../shared/components/spinner';
-import MovieList from '../../shared/components/movie-list';
 import SearchFilter from '../search-filter';
-import useFetch from '../../../hooks/use-fetch';
+import MovieList from '../../shared/components/movie-list';
 
-const url = 'https://reactjs-cdp.herokuapp.com/movies';
+class SearchList extends Component {
+  componentDidMount() {
+    this.props.fetchMovies();
+  }
 
-export default () => {
-  // TODO: this is just for markup before redux
-  const [data, isLoading] = useFetch(url);
+  render() {
+    const { isLoading, movies } = this.props;
 
-  return isLoading ? <Spinner /> : (
-    <React.Fragment>
+    return isLoading ? <Spinner /> : (
+      <React.Fragment>
+        <SearchFilter moviesCount={movies.length} />
+        <MovieList movies={movies} />
+      </React.Fragment>
+    );
+  }
+}
 
-      <SearchFilter moviesCount={data.data.length} />
+const mapStateToProps = state => ({
+  movies: moviesFilterSelector(state),
+  isLoading: state.movies.isLoading,
+});
 
-      <MovieList movies={data.data} />
+const mapDispatchToProps = { fetchMovies };
 
-    </React.Fragment>
-  );
-};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SearchList);

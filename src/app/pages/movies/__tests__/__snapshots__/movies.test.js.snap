@@ -5,6 +5,6 @@ exports[`DetailsList matches snapshot 1`] = `
   className="movies"
 >
   <_default />
-  <_default />
+  <Connect(SearchList) />
 </section>
 `;
