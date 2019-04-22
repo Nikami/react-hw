@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import connect from 'react-redux/es/connect/connect';
 
-import { doMoviesFilter } from '../../shared/actions/movies';
+import { doMoviesFilter } from '../../../redux/actions/movies';
 import FilterContainer from '../../shared/components/filter-container';
 
 import './styles.scss';

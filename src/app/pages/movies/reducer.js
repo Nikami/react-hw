@@ -4,7 +4,7 @@ import {
   MOVIES_FETCH_SUCCESS,
   MOVIES_FILTER,
   MOVIES_SEARCH,
-} from '../shared/types';
+} from '../../redux/types';
 
 const moviesInitialState = {
   data: [],

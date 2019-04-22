@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import connect from 'react-redux/es/connect/connect';
 
-import { fetchMovies } from '../shared/actions/movies';
-import { fetchMovie } from '../shared/actions/movie';
+import { fetchMovies } from '../../redux/actions/movies';
+import { fetchMovie } from '../../redux/actions/movie';
 import { moviesByGenreSelector } from './selectors';
 import Spinner from '../shared/components/spinner';
 import DetailsBar from './details-bar';

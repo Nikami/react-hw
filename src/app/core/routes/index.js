@@ -8,7 +8,7 @@ import MovieDetails from '../../pages/movie-details';
 export default () => (
   <Switch>
     <Route path={ROUTES.movies} exact component={Movies} />
-    <Route path={`${ROUTES.details}`} exact component={MovieDetails} />
-    <Route path={`${ROUTES.details}/:id`} exact component={MovieDetails} />
+    <Route path={`${ROUTES.film}`} exact component={MovieDetails} />
+    <Route path={`${ROUTES.film}/:id`} exact component={MovieDetails} />
   </Switch>
 );

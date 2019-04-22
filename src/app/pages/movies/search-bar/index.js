@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import _ from 'underscore';
 import connect from 'react-redux/es/connect/connect';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -9,8 +8,8 @@ import Typography from '@material-ui/core/Typography';
 
 import { ROUTES } from '../../../core/config';
 import { searchInArray, searchInString } from '../../shared/utils';
-import { doMoviesSearch } from '../../shared/actions/movies';
-import { doMovieClear } from '../../shared/actions/movie';
+import { doMoviesSearch } from '../../../redux/actions/movies';
+import { doMovieClear } from '../../../redux/actions/movie';
 import BgContainer from '../../shared/components/bg-container';
 import Roulette from '../../shared/components/roulette';
 
@@ -50,13 +49,13 @@ export const SearchBar = ({
     props.doMovieClear();
 
     if (movie) {
-      history.push(`${ROUTES.details}/${movie.id}`);
+      history.push(`${ROUTES.film}/${movie.id}`);
     } else {
-      history.push(`${ROUTES.details}`);
+      history.push(`${ROUTES.film}`);
     }
   };
 
-  const handleSearch = _.debounce(v => setQuery(v), 300);
+  const handleSearch = e => setQuery(e.target.value);
   const searchByTitle = () => {
     setTitleBtnColor(BTN_PRIMARY_COLOR);
     setGenreBtnColor(BTN_SECONDARY_COLOR);
@@ -83,7 +82,7 @@ export const SearchBar = ({
         </Typography>
 
         <TextField
-          onChange={e => handleSearch(e.target.value)}
+          onChange={handleSearch}
           id="search"
           placeholder="Search"
           className="search-field"
