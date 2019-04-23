@@ -1,17 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { ROUTES } from '../../../../core/config';
 import { joinArrToStrByComma, sliceDateStrToYear } from '../../utils';
 
 import './styles.scss';
 
 export default ({
-  poster_path, title, release_date, genres,
+  id, poster_path, title, release_date, genres,
 }) => (
   <div className="movie">
-    <img
-      src={poster_path}
-      alt={title}
-      className="movie__poster"
-    />
+    <Link key={id} to={`${ROUTES.film}/${id}`} className="link-reset">
+      <img
+        src={poster_path}
+        alt={title}
+        className="movie__poster"
+      />
+    </Link>
 
     <div className="movie__info">
 
