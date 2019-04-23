@@ -1,10 +1,10 @@
 export const moviesFilterSelector = ({ movies, filters }) => {
-  const { filter } = filters;
+  const { filterBy } = filters;
   return [...movies.data].sort((a, b) => {
-    if (a[filter] > b[filter]) {
+    if (a[filterBy] > b[filterBy]) {
       return 1;
     }
-    if (a[filter] < b[filter]) {
+    if (a[filterBy] < b[filterBy]) {
       return -1;
     }
     return 0;
