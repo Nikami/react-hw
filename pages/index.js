@@ -1,7 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PageWrapper from '../next/page';
 
-const test = () => (<div>TEST</div>);
+class Test extends React.Component {
+  // static getInitialProps({ store }) {
+  //   return { store };
+  // }
 
-export default PageWrapper(connect(state => state)(test));
+  render() {
+    return (<div>{ this.props.store }</div>);
+  }
+}
+
+export default connect(state => state)(Test);
