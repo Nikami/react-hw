@@ -3,7 +3,7 @@ import {
   MOVIE_FETCH_ERROR,
   MOVIE_FETCH_REQUEST,
   MOVIE_FETCH_SUCCESS,
-} from '../shared/types';
+} from '../../redux/types';
 
 const initialState = {
   data: null,

@@ -1,4 +1,4 @@
-import { BASE_URL } from '../../../../core/config';
+import { BASE_URL } from '../../../core/config';
 import {
   MOVIE_CLEAR,
   MOVIE_FETCH_ERROR,

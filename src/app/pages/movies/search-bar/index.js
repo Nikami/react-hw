@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
-import _ from 'underscore';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
 import { ROUTES } from '../../../core/config';
 import { searchInArray, searchInString } from '../../shared/utils';
-import { doMoviesSearch } from '../../shared/actions/movies';
-import { doMovieClear } from '../../shared/actions/movie';
+import { doMoviesSearchBy, doMoviesSearchQuery } from '../../../redux/actions/movies';
+import { doMovieClear } from '../../../redux/actions/movie';
 import BgContainer from '../../shared/components/bg-container';
 import Roulette from '../../shared/components/roulette';
 
@@ -25,24 +24,29 @@ const SEARCH_PARAM = {
 };
 
 export const SearchBar = ({
-  search,
+  searchBy,
   movies,
   history,
   ...props
 }) => {
   const [titleBtnColor, setTitleBtnColor] = useState(
-    search === SEARCH_PARAM.title ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
+    searchBy === SEARCH_PARAM.title ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
   );
   const [genreBtnColor, setGenreBtnColor] = useState(
-    search === SEARCH_PARAM.genre ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
+    searchBy === SEARCH_PARAM.genre ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
   );
   const [query, setQuery] = useState('');
+
+  // clean store
+  useEffect(() => {
+    props.doMoviesSearchQuery('');
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const movie = movies.find(m => (
-      search === SEARCH_PARAM.genre
+      searchBy === SEARCH_PARAM.genre
         ? searchInArray(query, m.genres)
         : searchInString(query, m.title)
     ));
@@ -50,22 +54,25 @@ export const SearchBar = ({
     props.doMovieClear();
 
     if (movie) {
-      history.push(`${ROUTES.details}/${movie.id}`);
+      history.push(`${ROUTES.film}/${movie.id}`);
     } else {
-      history.push(`${ROUTES.details}`);
+      history.push(`${ROUTES.film}`);
     }
   };
 
-  const handleSearch = _.debounce(v => setQuery(v), 300);
+  const handleSearch = (e) => {
+    setQuery(e.target.value);
+    props.doMoviesSearchQuery(e.target.value);
+  };
   const searchByTitle = () => {
     setTitleBtnColor(BTN_PRIMARY_COLOR);
     setGenreBtnColor(BTN_SECONDARY_COLOR);
-    props.doMoviesSearch(SEARCH_PARAM.title);
+    props.doMoviesSearchBy(SEARCH_PARAM.title);
   };
   const searchByGenre = () => {
     setGenreBtnColor(BTN_PRIMARY_COLOR);
     setTitleBtnColor(BTN_SECONDARY_COLOR);
-    props.doMoviesSearch(SEARCH_PARAM.genre);
+    props.doMoviesSearchBy(SEARCH_PARAM.genre);
   };
 
   return (
@@ -83,7 +90,7 @@ export const SearchBar = ({
         </Typography>
 
         <TextField
-          onChange={e => handleSearch(e.target.value)}
+          onChange={handleSearch}
           id="search"
           placeholder="Search"
           className="search-field"
@@ -138,10 +145,10 @@ export const SearchBar = ({
 
 const mapStateToProps = ({ movies, filters }) => ({
   movies: movies.data,
-  search: filters.search,
+  searchBy: filters.searchBy,
 });
 
-const mapDispatchToProps = { doMoviesSearch, doMovieClear };
+const mapDispatchToProps = { doMoviesSearchBy, doMoviesSearchQuery, doMovieClear };
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(
