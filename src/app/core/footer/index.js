@@ -1,8 +1,8 @@
 import React from 'react';
 
 import withStyles from '@material-ui/core/styles/withStyles';
-import { containerMUI } from '../pages/shared/mui-styles';
-import Roulette from '../pages/shared/components/roulette';
+import { containerMUI } from '../../pages/shared/mui-styles';
+import Roulette from '../../pages/shared/components/roulette';
 
 import './styles.scss';
 

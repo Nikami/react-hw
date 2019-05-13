@@ -1,10 +1,11 @@
-import { BASE_URL } from '../../../../core/config';
+import { BASE_URL } from '../../../core/config';
 import {
   MOVIES_FETCH_ERROR,
   MOVIES_FETCH_REQUEST,
   MOVIES_FETCH_SUCCESS,
   MOVIES_FILTER,
-  MOVIES_SEARCH,
+  MOVIES_SEARCH_BY,
+  MOVIES_SEARCH_QUERY,
 } from '../../types';
 
 export const doMoviesRequest = () => ({
@@ -26,8 +27,13 @@ export const doMoviesFilter = payload => ({
   payload,
 });
 
-export const doMoviesSearch = payload => ({
-  type: MOVIES_SEARCH,
+export const doMoviesSearchBy = payload => ({
+  type: MOVIES_SEARCH_BY,
+  payload,
+});
+
+export const doMoviesSearchQuery = payload => ({
+  type: MOVIES_SEARCH_QUERY,
   payload,
 });
 
