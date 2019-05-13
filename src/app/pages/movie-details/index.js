@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 
 import { fetchMovies } from '../shared/actions/movies';
 import { fetchMovie } from '../shared/actions/movie';

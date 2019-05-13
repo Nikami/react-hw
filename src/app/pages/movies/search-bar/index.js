@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import _ from 'underscore';
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';

@@ -11,6 +11,11 @@
 chrome-profiler-events.json
 speed-measure-plugin.json
 
+# production
+/build
+/dist
+/.next
+
 # IDEs and editors
 /.idea
 .project
