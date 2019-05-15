@@ -1,14 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import SearchBar from '../server/components/search-bar';
 
-class Test extends React.Component {
-  // static getInitialProps({ store }) {
-  //   return { store };
-  // }
+class Index extends React.Component {
+  static getInitialProps({ reduxStore, req }) {
+    return {};
+  }
 
   render() {
-    return (<div>{ this.props.store }</div>);
+    return (
+      <section className="movies">
+        <SearchBar />
+      </section>
+    );
   }
 }
 
-export default connect(state => state)(Test);
+export default connect(
+  null,
+)(Index);
