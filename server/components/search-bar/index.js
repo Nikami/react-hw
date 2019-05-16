@@ -10,7 +10,7 @@ import { doMovieClear } from '../../../src/app/redux/actions/movie';
 import BgContainer from '../../../src/app/pages/shared/components/bg-container';
 import Roulette from '../../../src/app/pages/shared/components/roulette';
 
-import './styles.scss';
+import '../../../src/app/pages/movies/search-bar/styles.scss';
 
 const BTN_PRIMARY_COLOR = 'primary';
 const BTN_SECONDARY_COLOR = 'secondary';

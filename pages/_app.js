@@ -3,7 +3,9 @@ import App, { Container } from 'next/app';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { MuiThemeProvider } from '@material-ui/core';
 import withReduxStore from '../server/lib/with-redux-store';
+import { MUI_THEME } from '../src/app/core/theme';
 import ErrorBoundary from '../src/app/core/error-boundary';
 import Footer from '../src/app/core/footer';
 
@@ -25,7 +27,9 @@ class MyApp extends App {
           <CssBaseline />
           <main className="app">
             <Provider store={reduxStore}>
-              <Component {...pageProps} />
+              <MuiThemeProvider theme={MUI_THEME}>
+                <Component {...pageProps} />
+              </MuiThemeProvider>
             </Provider>
             <Footer />
           </main>

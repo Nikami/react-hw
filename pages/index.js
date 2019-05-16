@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SearchBar from '../server/components/search-bar';
 
-class Index extends React.Component {
-  static getInitialProps({ reduxStore, req }) {
+class Index extends Component {
+  static getInitialProps() {
     return {};
   }
 
