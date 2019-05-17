@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { filtersReducer, moviesReducer } from '../app/movies/reducer';
-import { movieReducer } from '../app/movie-details/reducer';
+import { movieReducer } from '../app/film/reducer';
 
 export const rootReducer = combineReducers({
   movies: moviesReducer,

@@ -1,17 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Movies from '../src/app/movies';
 
-class Index extends Component {
-  static getInitialProps() {
-    return {};
-  }
+const IndexPage = () => <Movies />;
+IndexPage.getInitialProps = () => {};
 
-  render() {
-    return <Movies />;
-  }
-}
-
-export default connect(
-  null,
-)(Index);
+export default connect(null)(IndexPage);

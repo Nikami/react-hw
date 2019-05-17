@@ -1,5 +1,5 @@
 import React from 'react';
-import DetailsBar from '../../app/movie-details/details-bar';
+import DetailsBar from '../../app/film/details-bar';
 
 import './styles.scss';
 

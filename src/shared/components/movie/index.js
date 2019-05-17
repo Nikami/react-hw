@@ -10,7 +10,7 @@ export default ({
   id, poster_path, title, release_date, genres,
 }) => (
   <div className="movie">
-    <Link key={id} href={`${ROUTES.film}/${id}`} className="link-reset">
+    <Link key={id} href={`${ROUTES.film}/${id}`}>
       <img
         src={poster_path}
         alt={title}
