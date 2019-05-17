@@ -1,0 +1,31 @@
+@import '../../../assets/styles/utils/colors';
+@import '../../../assets/styles/utils/functions';
+
+.movie {
+  &__poster {
+    width: 100%;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    grid-gap: 5px;
+    margin: 10px 0;
+  }
+
+  &__title {
+    color: rgba($black-color, 0.7);
+    margin: 0;
+  }
+
+  &__year {
+    border: 1px solid rgba($black-color, 0.3);
+    font-size: px2rem(10px);
+    padding: 2px 4px;
+  }
+
+  &__genres {
+    color: rgba($black-color, 0.4);
+    font-size: px2rem(12px);
+  }
+}

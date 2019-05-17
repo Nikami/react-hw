@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SearchBar from '../server/components/search-bar';
+import Movies from '../src/app/movies';
 
 class Index extends Component {
   static getInitialProps() {
@@ -8,11 +8,7 @@ class Index extends Component {
   }
 
   render() {
-    return (
-      <section className="movies">
-        <SearchBar />
-      </section>
-    );
+    return <Movies />;
   }
 }
 
