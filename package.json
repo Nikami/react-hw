@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "next build",
-    "start:build": "set NODE_ENV=development && npm run build && npm run start",
+    "start:build": "set NODE_ENV=production && npm run build && npm run start",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors",
