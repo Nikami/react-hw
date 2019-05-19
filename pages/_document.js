@@ -21,8 +21,8 @@ class MyDocument extends Document {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </Head>
       <body>
-        <Main />
-        <NextScript />
+      <Main />
+      <NextScript />
       </body>
       </html>
     );
