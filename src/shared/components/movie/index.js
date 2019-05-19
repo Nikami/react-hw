@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link } from '../../../../routes';
 
 import { ROUTES } from '../../../core/config';
 import { joinArrToStrByComma, sliceDateStrToYear } from '../../utils';

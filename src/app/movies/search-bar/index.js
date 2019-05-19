@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
+import { Router } from '../../../../routes';
 import { searchInArray, searchInString } from '../../../shared/utils';
 import { doMoviesSearchBy, doMoviesSearchQuery } from '../../../redux/actions/movies';
 import { doMovieClear } from '../../../redux/actions/movie';
@@ -51,9 +52,9 @@ export const SearchBar = ({
     props.doMovieClear();
 
     if (movie) {
-      // history.push(`${ROUTES.film}/${movie.id}`);
+      Router.pushRoute('film', { id: movie.id });
     } else {
-      // history.push(`${ROUTES.film}`);
+      Router.pushRoute('not-found');
     }
   };
 

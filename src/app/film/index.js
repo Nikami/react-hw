@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'next/router';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
@@ -11,21 +11,21 @@ import DetailsBar from './details-bar';
 import DetailsList from './details-list';
 
 const MovieDetails = ({
-  match,
+  router,
   isLoading,
   movie,
   movies,
   ...props
 }) => {
   useEffect(() => {
-    if (match.params.id) {
-      props.fetchMovie(match.params.id);
+    if (router.query.id) {
+      props.fetchMovie(router.query.id);
 
       if (movies.length === 0) {
         props.fetchMovies();
       }
     }
-  }, [match.params.id]);
+  }, [router.query.id]);
 
   return isLoading ? <Spinner /> : (
     <section className="movies">

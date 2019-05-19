@@ -1,20 +1,20 @@
 @import '../../assets/styles/utils/colors';
 
-.not-found {
+.error {
   align-items: center;
   display: flex;
   flex-direction: column;
   padding: 20px;
   height: 100%;
 
-  &__404 {
+  &__code {
     font-size: 70px;
     color: $primary-color;
     margin-top: 20%;
     text-align: center;
   }
 
-  &__title {
+  &__msg {
     color: $secondary-color;
     font-size: 22px;
     font-weight: 100;
