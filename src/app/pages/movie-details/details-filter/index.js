@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import FilterContainer from '../../shared/components/filter-container';
 

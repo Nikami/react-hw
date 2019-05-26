@@ -1,9 +1,11 @@
+// @flow
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 
 import { doMoviesFilter } from '../../../redux/actions/movies';
 import FilterContainer from '../../shared/components/filter-container';
+import type { AppState } from '../../../redux/root-reducer';
 
 import './styles.scss';
 
@@ -14,7 +16,7 @@ const FILTER_TYPE = {
 const BTN_PRIMARY_COLOR = 'primary';
 const BTN_SECONDARY_COLOR = 'secondary';
 
-export const SearchFilter = ({ moviesCount, filterBy, ...props }) => {
+export const SearchFilter = ({ moviesCount, filterBy, ...props }: AppState) => {
   const [ratingColor, setRatingColor] = useState(
     FILTER_TYPE.rating === filterBy ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
   );
@@ -56,7 +58,7 @@ export const SearchFilter = ({ moviesCount, filterBy, ...props }) => {
   );
 };
 
-const mapStateToProps = ({ filters }) => ({
+const mapStateToProps = ({ filters }: AppState) => ({
   filterBy: filters.filterBy,
 });
 

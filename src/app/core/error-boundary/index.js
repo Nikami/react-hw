@@ -1,18 +1,23 @@
-import React from 'react';
+// @flow
+import React, { Component } from 'react';
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+type ErrorBoundaryState = {|
+  hasError: boolean
+|};
+
+class ErrorBoundary extends Component<any, ErrorBoundaryState> {
+  constructor(props: any) {
     super(props);
     this.state = { hasError: false };
   }
 
   // eslint-disable-next-line
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error: any) {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error: any, info: any) {
     // eslint-disable-next-line
     console.error(error, info);
   }

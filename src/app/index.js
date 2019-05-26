@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Provider } from 'react-redux';
 import { MuiThemeProvider } from '@material-ui/core/styles';
@@ -7,9 +8,11 @@ import { MUI_THEME } from './core/theme';
 
 import Routes from './core/routes';
 import Footer from './core/footer';
+import type { AppState } from './redux/root-reducer';
+
 import './styles.scss';
 
-const store = configureStore();
+const store: AppState = configureStore();
 
 export default () => (
   <main className="app">

@@ -9,3 +9,10 @@ export const MOVIE_FETCH_REQUEST = 'MOVIE_FETCH_REQUEST';
 export const MOVIE_FETCH_SUCCESS = 'MOVIE_FETCH_SUCCESS';
 export const MOVIE_FETCH_ERROR = 'MOVIE_FETCH_ERROR';
 export const MOVIE_CLEAR = 'MOVIE_CLEAR';
+
+type Action = {|
+  type: string,
+  payload?: any
+|}
+
+export type { Action };

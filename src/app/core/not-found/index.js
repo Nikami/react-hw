@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import DetailsBar from '../../pages/movie-details/details-bar';
 
