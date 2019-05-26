@@ -1,3 +1,4 @@
+import 'isomorphic-unfetch';
 import { BASE_URL } from '../../../core/config';
 import { MOVIE_CLEAR, MOVIE_FETCH_ERROR, MOVIE_FETCH_REQUEST, MOVIE_FETCH_SUCCESS } from '../../types';
 

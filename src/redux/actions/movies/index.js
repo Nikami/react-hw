@@ -1,3 +1,4 @@
+import 'isomorphic-unfetch';
 import { BASE_URL } from '../../../core/config';
 import {
   MOVIES_FETCH_ERROR,
@@ -38,15 +39,8 @@ export const doMoviesSearchQuery = payload => ({
 });
 
 export const fetchMovies = () => async (dispatch) => {
-  dispatch(doMoviesRequest());
-
-  try {
-    const response = await fetch(`${BASE_URL}movies`);
-    const data = await response.json();
-    dispatch(doMoviesFetchSuccess(data.data));
-  } catch (e) {
-    // eslint-disable-next-line
-    console.error(e);
-    dispatch(doMoviesFetchError([]));
-  }
+  return fetch(`${BASE_URL}movies`)
+    .then((response) => response.json())
+    .then((data) => dispatch(doMoviesFetchSuccess(data.data)))
+    .catch(e => dispatch(doMoviesFetchError([])));
 };
