@@ -1,3 +1,4 @@
+// @flow
 import React, { useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
@@ -13,6 +14,7 @@ import { doMovieClear } from '../../../redux/actions/movie';
 import BgContainer from '../../shared/components/bg-container';
 import Roulette from '../../shared/components/roulette';
 
+import type { AppState } from '../../../redux/root-reducer';
 import './styles.scss';
 
 const BTN_PRIMARY_COLOR = 'primary';
@@ -28,7 +30,7 @@ export const SearchBar = ({
   movies,
   history,
   ...props
-}) => {
+}: AppState) => {
   const [titleBtnColor, setTitleBtnColor] = useState(
     searchBy === SEARCH_PARAM.title ? BTN_PRIMARY_COLOR : BTN_SECONDARY_COLOR,
   );
@@ -143,7 +145,7 @@ export const SearchBar = ({
   );
 };
 
-const mapStateToProps = ({ movies, filters }) => ({
+const mapStateToProps = ({ movies, filters }: AppState) => ({
   movies: movies.data,
   searchBy: filters.searchBy,
 });

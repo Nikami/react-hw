@@ -1,0 +1,20 @@
+[ignore]
+.*/dist/*
+.*/__mocks__/*
+.*/__e2e__/*
+./config/*
+.*/public/*
+.*/node_modules/(?!(@material-ui/core|react|redux|react-redux))/*.
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+module.file_ext=.js
+module.file_ext=.scss
+module.name_mapper.extension='scss' -> 'empty/object'
+
+[strict]

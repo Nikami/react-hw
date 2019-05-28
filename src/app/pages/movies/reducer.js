@@ -1,3 +1,4 @@
+// @flow
 import {
   MOVIES_FETCH_ERROR,
   MOVIES_FETCH_REQUEST,
@@ -6,13 +7,29 @@ import {
   MOVIES_SEARCH_BY,
   MOVIES_SEARCH_QUERY,
 } from '../../redux/types';
+import type { Action } from '../../redux/types';
+import type { Movie } from '../movie-details/reducer';
 
-const moviesInitialState = {
+type MoviesState = {|
+  data: Movie[],
+  isLoading: boolean,
+|}
+
+type FilterState = {|
+  filterBy: string,
+  searchBy: string,
+  query: string
+|}
+
+const moviesInitialState: MoviesState = {
   data: [],
   isLoading: false,
 };
 
-export function moviesReducer(state = moviesInitialState, action) {
+export function moviesReducer(
+  state: MoviesState = moviesInitialState,
+  action: Action,
+) {
   switch (action.type) {
     case MOVIES_FETCH_REQUEST:
       return { ...state, isLoading: true };
@@ -24,12 +41,16 @@ export function moviesReducer(state = moviesInitialState, action) {
   }
 }
 
-const filtersInitialState = {
+const filtersInitialState: FilterState = {
   filterBy: 'vote_count',
   searchBy: 'title',
   query: '',
 };
-export function filtersReducer(state = filtersInitialState, action) {
+
+export function filtersReducer(
+  state: FilterState = filtersInitialState,
+  action: Action,
+) {
   switch (action.type) {
     case MOVIES_FILTER:
       return { ...state, filterBy: action.payload };
@@ -41,3 +62,5 @@ export function filtersReducer(state = filtersInitialState, action) {
       return state;
   }
 }
+
+export type { MoviesState, FilterState };

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { containerMUI } from '../../mui-styles';

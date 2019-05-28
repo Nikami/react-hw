@@ -1,10 +1,11 @@
 {
   "name": "react-hw",
-  "version": "5.0.0",
+  "version": "8.0.0",
   "homepage": "https://nikami.github.io/react-hw/",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --config ./config/webpack.config.dev.js",
     "build": "./node_modules/.bin/webpack --config ./config/webpack.config.production.js",
+    "flow": "flow",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors",
@@ -37,8 +38,9 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
+    "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
+    "flow-bin": "^0.98.1",
     "gh-pages": "^2.0.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -58,6 +60,7 @@
     "@babel/plugin-transform-runtime": "^7.4.0",
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.4",
+    "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.4.10",
     "babel-core": "^7.0.0-bridge.0",

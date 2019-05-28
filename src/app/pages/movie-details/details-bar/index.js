@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Link } from 'react-router-dom';
 import _ from 'underscore';
@@ -8,10 +9,11 @@ import { ROUTES } from '../../../core/config';
 import { joinArrToStrByComma, sliceDateStrToYear } from '../../shared/utils';
 import BgContainer from '../../shared/components/bg-container';
 import Roulette from '../../shared/components/roulette';
+import type { AppState } from '../../../redux/root-reducer';
 
 import './styles.scss';
 
-export default ({ movie }) => (
+export default ({ movie }: AppState) => (
   <BgContainer>
 
     <div className="details-header">

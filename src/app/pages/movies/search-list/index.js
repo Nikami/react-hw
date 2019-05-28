@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -7,8 +8,9 @@ import { moviesFilterSelector } from '../selectors';
 import Spinner from '../../shared/components/spinner';
 import SearchFilter from '../search-filter';
 import MovieList from '../../shared/components/movie-list';
+import type { AppState } from '../../../redux/root-reducer';
 
-class SearchList extends Component {
+class SearchList extends Component<AppState> {
   componentDidMount() {
     this.props.fetchMovies();
   }
@@ -25,7 +27,7 @@ class SearchList extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: AppState) => ({
   movies: moviesFilterSelector(state),
   isLoading: state.movies.isLoading,
 });

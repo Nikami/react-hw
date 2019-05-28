@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,9 +7,17 @@ import { joinArrToStrByComma, sliceDateStrToYear } from '../../utils';
 
 import './styles.scss';
 
+type MovieProps = {|
+  id: number,
+  poster_path: string,
+  title: string,
+  release_date: string,
+  genres: string[]
+|}
+
 export default ({
   id, poster_path, title, release_date, genres,
-}) => (
+}: MovieProps) => (
   <div className="movie">
     <Link key={id} to={`${ROUTES.film}/${id}`} className="link-reset">
       <img
@@ -37,3 +46,5 @@ export default ({
     </div>
   </div>
 );
+
+export type { MovieProps };
