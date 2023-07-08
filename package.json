@@ -98,7 +98,7 @@
     "sass-loader": "^6.0.6",
     "selenium-server": "^3.141.59",
     "style-loader": "^0.23.1",
-    "stylelint": "~9.10.1",
+    "stylelint": "~15.10.1",
     "stylelint-config-standard": "~18.2.0",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.6",
